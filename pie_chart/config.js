@@ -9,6 +9,9 @@ const pieConfig = {
         ['Algo', 20]
 
     ],
+    
+    // Puedes encontrar todas las opciones de configuración disponibles en:
+    // https://developers.google.com/chart/interactive/docs/gallery/piechart#configuration-options
     charOptions: {
             // Opciones de las acotaciones
             legend: {

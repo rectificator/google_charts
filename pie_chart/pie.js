@@ -3,15 +3,34 @@
 
 google.charts.load('current', {'packages':['corechart']})
 .then(() => {
-  drawChart(pieConfig);
+
+  // Ésta es la función que se utilizará para construir el gráfico
+  
+  drawChart(pieConfig, 'piechart');
 });
 
-function drawChart(config) {
+/* 
+@function drawChart
+
+  @object
+  @pieConfig: Recibe el objeto de configuración
+              que debe contener las siguientes propiedades:
+              - chartValues: Como mínimo debe contener el dominio ( X )
+                            y contradominio ( f(X) ) qpara construir la gráfico.
+                            La primera fila son las etiquetas para X y f(X)
+              - charOptions: Objeto que contiene 
+                             las opciones de estilo del gráfico
+              - charType: Función de callback que crea el objeto
+                          que construirá el gráfico.
+  @String
+  @htmlContainerId: Id del objeto HTML que contendrá el gráfico.
+  */
+function drawChart(config, htmlContainerId) {
 
   const options = config.charOptions;
   const data = google.visualization.arrayToDataTable(config.chartValues);
   
-  const chart = config.charType(document.getElementById('piechart'));
+  const chart = config.charType(document.getElementById(htmlContainerId));
   chart.draw(data, options);
 
   // Al Presionar el slice presionado
